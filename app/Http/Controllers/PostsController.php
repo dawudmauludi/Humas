@@ -11,7 +11,7 @@ use Symfony\Component\CssSelector\Node\FunctionNode;
 class PostsController extends Controller
 {
     public function index(){
-
+        
         $title = '';
         if(request('category')){
             $category = Category::firstWhere('slug', request('category'));
@@ -30,6 +30,8 @@ class PostsController extends Controller
             'posts' => post::latest()->filter(request(['cari', 'category', 'author']))->paginate(7)->withQueryString()
         ]);
 
+        
+
     }
 
 
@@ -45,6 +47,24 @@ class PostsController extends Controller
 {
     $categories = Category::all();
     return view('post.show', compact('post', 'categories'));
+}
+
+public function store(Request $request)
+{
+    // Validasi request
+    $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    // Simpan gambar
+    $imageName = time().'.'.$request->image->extension();  
+    $request->image->move(public_path('storage/image'), $imageName);
+
+    // Simpan path gambar ke database (contoh)
+    $post = new Post();
+    $post->image = 'image/'.$imageName;
+    $post->save();
+
 }
 
 }

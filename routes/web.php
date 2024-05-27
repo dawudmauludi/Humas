@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\homeController;
 use App\Models\post;
 use App\Models\User;
 use App\Models\Category;
@@ -25,6 +26,8 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/', [homeController::class, 'index']);
 
 Route::get('/about', function () {
     return view('about');

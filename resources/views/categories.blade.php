@@ -3,6 +3,8 @@
 
 @extends('layout.main')
 
+@section('title','Categories')
+
 @section('container')
 
 <h1 class="mb-5">Post Categories</h1>

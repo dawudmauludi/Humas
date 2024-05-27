@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 .form-signin {
     max-width: 330px;
     padding: 1rem;
@@ -22,3 +31,33 @@
 .form-registration input {
     border-radius: 0;
 }
+
+
+/* HOME PAGE */
+.container-marketing {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.container-marketing .row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.container-marketing .col-lg-4 {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.container-marketing .col-lg-4 img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.container-marketing h2, .container-marketing p {
+    text-align: center;
+}
+
+
+

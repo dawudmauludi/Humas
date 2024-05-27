@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-
+@section('title','Visi & Misi')
 @section('container')
     
 <h1 class="text-center">Hello With me</h1>
