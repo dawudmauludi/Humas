@@ -1,5 +1,5 @@
 
-@extends('layout.main')
+@extends('layout.index')
 
 
 @section('title','Berita & Acara')
@@ -29,12 +29,13 @@
         @if ($posts->count())
         <div class="card mb-3">
           @if ($posts[0]->image)
-          <div style="max-height: 400px; overflow: hidden;">
-              <img src="{{ asset('storage/'. $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}" class="img-fluid">
+          <div style="max-height: 400px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+            <img src="{{ asset('storage/'. $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}" class="img-fluid" style="max-width: 100%; height: auto;">
+
 
           </div>
               @else
-              <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+              <img src="https://source.unsplash.com/1920x800?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
           @endif
           
             <div class="card-body text-center">
@@ -42,7 +43,7 @@
              
               <p>
                 <small class="text-muted">
-                By: <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none"> {{ $posts[0]->author->name }}</a> In <a href="/posts?category={{$posts[0]->category->slug}}" class="text-decoration-none">{{$posts[0]->category->name}}</a>{{ $posts[0]->created_at->diffForHumans() }}</small>   </p>
+                By: <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none"> {{ $posts[0]->author->name }}</a> In <a href="/posts?category={{$posts[0]->category->slug}}" class="text-decoration-none">{{$posts[0]->category->name}}</a>{{ $posts[0]->created_at->format('d-m-Y') }}</small>   </p>
               <p class="card-text">{{ $posts[0]->exerpt }}</p>
               <a href="/posts/{{$posts[0]->slug}}" class="btn btn-danger mb-5 mt-3">Read More...</a>
 
@@ -59,9 +60,9 @@
                     <div class="card">
                         <div class="position-absolute bg-dark px-3 py-2 text-light"><a href="/posts?category={{$post->category->slug}}" class="text-decoration-none text-light">{{ $post->category->name }}</a></div>
                         @if ($post->image)
-                            <img src="{{ asset('storage/'. $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid">
+                        <img src="{{ asset('storage/'. $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid">
                             @else
-                            <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
+                            <img src="https://source.unsplash.com/800x600?{{ $post->category->name }}" class="card-img-top" alt="{{ $post->category->name }}">
                         @endif
                      
                         <div class="card-body">

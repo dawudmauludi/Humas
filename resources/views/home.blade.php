@@ -29,16 +29,14 @@
         }
 
   
-
+        html {
+    scroll-behavior: smooth; /* Scroll halus untuk seluruh halaman */
+}
        
-        .carousel{
-            width: 100%;
-            height: 800px;
-        }
-
+      
 
         .line{
-            border: 0.5px dashed grey;
+            border: 0.5px dashed rgb(173, 173, 173);
             margin-bottom: 20px;
         }
 
@@ -49,26 +47,45 @@
         .title-section h1{
             font-family: 'Roboto',serif;
         }
-      
 
-    @media (max-width: 600px) {
-        .container-beranda {
-            flex-direction: row;
+        .icons {
+            transition: transform 0.5s;
         }
 
-        .carousel{
-            width: 100%;
-            height: 500px;
+        .icons:hover {
+            transform: scaleX(-1);
         }
 
-        .waktu-sekarang, .hari-sekarang {
-            margin: 0;
+        .col-lg-4 {
+            margin-bottom: 20px;
         }
 
-        .marquee-container {
-            width: auto;
-        }
+        .category-link {
+      text-decoration: none;
+      color: dark;
+      transition: font-size 0.3s;
     }
+
+    .category-link:hover {
+      font-size: 1.1em; /* Menyesuaikan ukuran font saat di-hover */
+    }
+
+    .card-title {
+    position: relative;
+    display: inline-block;
+}
+
+.card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Jarak antara teks dan garis bawah */
+    left: 50%; /* Posisi garis bawah di tengah */
+    transform: translateX(-50%);
+    width: 30px; /* Panjang garis bawah */
+    height: 2px; /* Ketebalan garis bawah */
+    background-color: #599DDC; /* Warna garis bawah */
+}
+        
 </style> 
 
 
@@ -76,12 +93,12 @@
 
 
 <main>
-    <a href="" class="btn btn-primary"  id="scrollToTopBtn" title="Go to top"><i class="bi bi-arrow-up"></i></a>
+    <a href="" class="btn" style="background-color: #599DDC" id="scrollToTopBtn" title="Go to top"><i class="bi bi-arrow-up"></i></a>
     <div id="myCarousel" class="carousel slide mx-auto py-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"  aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"  aria-label="Slide 3"></button>
         </div>
        
         <div class="carousel-inner">
@@ -89,8 +106,8 @@
                 <img src="{{asset('img/gambar1.JPG')}}" alt="" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>Example headline.</h1>
-                        <p>Some representative placeholder content for the first slide of the carousel.</p>
+                        <h1>PROFIL SMK NEGERI 1 PASURUAN</h1>
+                        <p>Ini adalah profil smk negeri 1 pasuruan,</p>
                     </div>
                 </div>
             </div>
@@ -114,229 +131,218 @@
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon bg-dark px-4 py-4 rounded" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="carousel-control-next-icon bg-dark px-4 py-4 rounded" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
-    <div class="line"></div>
+    <div class="container">
     <div class="title-section text-uppercase text-light">
-        <h1 class="mb-5 text-center">Pengurus Humas</h1>
+        <h1 class="mb-5 text-center">Informasi</h1>
     </div>
     <div class="container marketing mt-4 container-marketing">
-        <div class="row">
-            <div class="col-lg-4">
-                <img src="{{asset('img/gambar2.JPG')}}" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <h2 class="text-center">DIMAS MAULANA</h2>
-                <p>Ketua Umum Foka-Pks</p>
+        <div class="row mt-5">
+            <div class="col-lg-4 shadow">
+                <h1 class="icons text-center mb-3"><a href="" class="text-light"><i class="bi bi-houses px-4 py-3 rounded-circle" style="background-color: #599DDC"></i></a></h1>
+                <h2 class="text-center">Prakerin</h2>
             </div>
-            <div class="col-lg-4">
-                <img src="{{asset('img/gambar2.JPG')}}" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <h2 class="text-center">RAINA NADHIFA</h2>
-                <p>Wakil Ketua</p>
+            <div class="col-lg-4 shadow">
+                <h1 class="icons text-center mb-3"><a href="" class="text-light"><i class="bi bi-envelope-paper px-4 py-3 rounded-circle" style="background-color: #599DDC"></i></a></h1>
+                <h2 class="text-center">Recruitment</h2>
             </div>
-            <div class="col-lg-4">
-                <img src="{{asset('img/gambar2.JPG')}}" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <h2 class="text-center">ARIO LESMONO</h2>
-                <p>Sekertaris</p>
+            <div class="col-lg-4 shadow">
+                <h1 class="icons text-center mb-3"><a href="" class="text-light"><i class="bi bi-file-earmark-text px-4 py-3 rounded-circle" style="background-color: #599DDC"></i></a></h1>
+                <h2 class="text-center">MoU</h2>
             </div>
-            <div class="col-lg-4">
-                <img src="{{asset('img/gambar2.JPG')}}" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <h2 class="text-center">RIO PRAMUDYA</h2>
-                <p>Wakil Sekertaris</p>
+            <div class="col-lg-4 shadow ">
+                <h1 class="icons text-center mb-3"><a href="" class="text-light"><i class="bi bi-backpack2 px-4 py-3 rounded-circle" style="background-color: #599DDC"></i></a></h1>
+                <h2 class="text-center">Tracer Study</h2>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="line mt-3"></div>
+    <hr>
+   
 
     <div class="row g-5">
+       
         <div class="col-md-8">
-          <h3 class="pb-4 mb-4 fst-italic border-bottom">
-            From the Firehose
-          </h3>
-    
-          <article class="blog-post">
-            <h2 class="blog-post-title">Sample blog post</h2>
-            <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
-    
-            <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
+            <h1>APA ITU HUMAS?</h1>
+            <article class="blog-post">
+                <p id="summary">Humas sekolah adalah bagian yang vital dalam memastikan komunikasi yang efektif antara sekolah dan berbagai pemangku kepentingan, termasuk siswa, orang tua, guru, staf, dan masyarakat luas...</p>
+                <p id="full-text" style="display: none;">Humas sekolah adalah bagian yang vital dalam memastikan komunikasi yang efektif antara sekolah dan berbagai pemangku kepentingan, termasuk siswa, orang tua, guru, staf, dan masyarakat luas. Peran ini mencakup berbagai aspek yang penting untuk menjaga citra positif sekolah dan memastikan informasi yang tepat dan akurat disampaikan kepada semua pihak yang terkait.</p>
+                <button id="read-more" class="btn btn-primary" onclick="toggleText()">Read More</button>
+            </article>
             <hr>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <h2>Blockquotes</h2>
-            <p>This is an example blockquote in action:</p>
-            <blockquote class="blockquote">
-              <p>Quoted text goes here.</p>
-            </blockquote>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <h3>Example lists</h3>
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
-            <ul>
-              <li>First list item</li>
-              <li>Second list item with a longer description</li>
-              <li>Third list item to close it out</li>
-            </ul>
-            <p>And this is an ordered list:</p>
-            <ol>
-              <li>First list item</li>
-              <li>Second list item with a longer description</li>
-              <li>Third list item to close it out</li>
-            </ol>
-            <p>And this is a definiton list:</p>
-            <dl>
-              <dt>HyperText Markup Language (HTML)</dt>
-              <dd>The language used to describe and define the content of a Web page</dd>
-              <dt>Cascading Style Sheets (CSS)</dt>
-              <dd>Used to describe the appearance of Web content</dd>
-              <dt>JavaScript (JS)</dt>
-              <dd>The programming language used to build advanced Web sites and applications</dd>
-            </dl>
-            <h2>Inline HTML elements</h2>
-            <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-            <ul>
-              <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
-              <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
-              <li>Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
-              <li>Citations, like <cite>— Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
-              <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
-              <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
-            </ul>
-            <p>Most of these elements are styled by browsers with few modifications on our part.</p>
-            <h2>Heading</h2>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <h3>Sub-heading</h3>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <pre><code>Example code block</code></pre>
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-          </article>
-    
-          <article class="blog-post">
-            <h2 class="blog-post-title">Another blog post</h2>
-            <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
-    
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <blockquote>
-              <p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.</p>
-            </blockquote>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <h3>Example table</h3>
-            <p>And don't forget about tables in these posts:</p>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Upvotes</th>
-                  <th>Downvotes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Alice</td>
-                  <td>10</td>
-                  <td>11</td>
-                </tr>
-                <tr>
-                  <td>Bob</td>
-                  <td>4</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>Charlie</td>
-                  <td>7</td>
-                  <td>9</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td>Totals</td>
-                  <td>21</td>
-                  <td>23</td>
-                </tr>
-              </tfoot>
-            </table>
-    
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-          </article>
-    
-          <article class="blog-post">
-            <h2 class="blog-post-title">New feature</h2>
-            <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
-    
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <ul>
-              <li>First list item</li>
-              <li>Second list item with a longer description</li>
-              <li>Third list item to close it out</li>
-            </ul>
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-          </article>
-    
-          <nav class="blog-pagination" aria-label="Pagination">
-            <a class="btn btn-outline-primary" href="#">Older</a>
-            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-          </nav>
+
+         
+          @if ($posts->count())
+            
+              <div class="card mb-3 shadow" data-aos="fade-up">
+               <div class="position-absolute bg-dark px-3 py-2 text-light"><a href="/posts?category={{$posts[1]->category->slug}}" class="text-decoration-none text-light">{{ $posts[1]->category->name }}</a></div>
+                @if ($posts[1]->image)
+                <div style="max-height: 400px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                  <img src="{{ asset('storage/' . $posts[1]->image) }}" alt="{{ $posts[1]->category->name }}" class="img-fluid" style="max-width: 100%; height: auto;">
+              </div>
+                @else  <img src="https://source.unsplash.com/1920x800?{{ $posts[1]->category->name }}" class="card-img-top" alt="{{ $posts[1]->category->name }}">
+                  
+                @endif
+                <div class="card-body text-center">
+                    <p>
+                        <small class="text-muted">
+                            <i class="bi bi-person-fill"></i> <a href="/posts?author={{ $posts[1]->author->username}}" class="text-decoration-none text-dark"> {{ $posts[1]->author->name }}</a> In <a href="/posts?category={{$posts[1]->category->slug}}" class="text-decoration-none text-dark"> {{$posts[1]->category->name}}</a> <i class="bi bi-calendar-fill"></i> {{ $posts[1]->created_at->format('d-m-Y') }}</small>   </p>
+                     
+                  <h5 class="card-title card-title-border"><a href="/posts/{{$posts[1]->slug}}" class="text-decoration-none text-dark">{{ $posts[1]->titel }}</a></h5>
+                 
+                   <p class="card-text text-truncate">{{ $posts[1]->exerpt }}</p>
+                  <a href="/posts/{{$posts[1]->slug}}" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+           
+        @else
+            <p>No posts available.</p>
+        @endif
+      
+            <hr>
+
+      <div class="row">
+        <div class="col-sm-6">
+             
+          @if ($posts->count())
+       
+          <div class="card mb-3 shadow" data-aos="fade-right">
+           <div class="position-absolute bg-dark px-3 py-2 text-light"><a href="/posts?category={{$posts[2]->category->slug}}" class="text-decoration-none text-light">{{ $posts[2]->category->name }}</a></div>
+            @if ($posts[2]->image)
+            <div style="max-height: 400px; overflow: hidden;">
+              <img src="{{ asset('storage/' . $posts[2]->image) }}" alt="{{ $posts[2]->category->name }}" class="img-fluid" style="max-width: 100%; height: auto;">
+          </div>
+            @else
+               <img src="https://source.unsplash.com/800x600?{{ $posts[2]->category->name }}" class="card-img-top" alt="{{ $posts[2]->category->name }}">
+            @endif
+            <div class="card-body text-center">
+                <p>
+                    <small class="text-muted">
+                    <i class="bi bi-person-fill"></i> <a href="/posts?author={{ $posts[2]->author->username}}" class="text-decoration-none text-dark"> {{ $posts[2]->author->name }}</a> In <a href="/posts?category={{$posts[2]->category->slug}}" class="text-decoration-none text-dark"> {{$posts[2]->category->name}}</a> <i class="bi bi-calendar-fill"></i> {{ $posts[2]->created_at->format('d-m-Y') }}</small>   </p>
+              <h5 class="card-title card-title-border"><a href="/posts/{{$posts[2]->slug}}" class="text-decoration-none text-dark">{{ $posts[2]->titel }}</a></h5>
+             
+             
+              <p class="card-text text-truncate">{{ $posts[2]->exerpt }}</p>
+              <a href="/posts/{{$posts[2]->slug}}" class="btn btn-primary">Read more</a>
+            </div>
+        </div>
+       
+    @else
+        <p>No posts available.</p>
+    @endif
+
+        </div>
+        <div class="col-sm-6">
+             
+          @if ($posts->count())
+         
+          <div class="card mb-3 shadow" data-aos="fade-left">
+           <div class="position-absolute bg-dark px-3 py-2 text-light"><a href="/posts?category={{$posts[3]->category->slug}}" class="text-decoration-none text-light">{{ $posts[3]->category->name }}</a></div>
+            @if ($posts[3]->image)
+            <div style="max-height: 400px; overflow: hidden;">
+              <img src="{{ asset('storage/' . $posts[3]->image) }}" alt="{{ $posts[3]->category->name }}" class="img-fluid" style="max-width: 100%; height: auto;">
+          </div>
+            @else
+                <img src="https://source.unsplash.com/800x600?{{ $posts[3]->category->name }}" class="card-img-top" alt="{{ $posts[3]->category->name }}">
+            @endif
+            <div class="card-body text-center">
+                <p>
+                    <small class="text-muted">
+                    <i class="bi bi-person-fill"></i> <a href="/posts?author={{ $posts[3]->author->username}}" class="text-decoration-none text-dark"> {{ $posts[3]->author->name }}</a> In <a href="/posts?category={{$posts[3]->category->slug}}" class="text-decoration-none text-dark"> {{$posts[3]->category->name}}</a> <i class="bi bi-calendar-fill"></i> {{ $posts[3]->created_at->format('d-m-Y') }}</small>   </p>
+                 
+              <h5 class="card-title card-title-border"><a href="/posts/{{$posts[3]->slug}}" class="text-decoration-none text-dark">{{ $posts[3]->titel }}</a></h5>
+             
+              <p class="card-text text-truncate">{{ $posts[3]->exerpt }}</p>
+              <a href="/posts/{{$posts[3]->slug}}" class="btn btn-primary">Read more</a>
+            </div>
+        </div>
+    @else
+        <p>No posts available.</p>
+    @endif
+
+        </div>
+        
+      </div>
+         
     
         </div>
     
+        
         <div class="col-md-4">
           <div class="position-sticky" style="top: 2rem;">
             <div class="p-4 mb-3 bg-light rounded">
               <h4 class="fst-italic text-center">BERITA TERBARU</h4>
               @if ($posts->count())
+           
               <div class="card mb-3">
-                  @if ($posts[0]->image)
-                  <div style="max-height: 400px; overflow: hidden;">
-                    <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}" class="img-fluid">
-                </div>
-                  @else
-                      <img src="https://source.unsplash.com/1200x400?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
-                  @endif
-                  <div class="card-body text-center">
-                    <h5 class="card-title"><a href="/posts/{{$posts[0]->slug}}" class="text-decoration-none text-dark">{{ $posts[0]->titel }}</a></h5>
-                   
-                    <p>
-                      <small class="text-muted">
-                      By: <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none"> {{ $posts[0]->author->name }}</a> In <a href="/posts?category={{$posts[0]->category->slug}}" class="text-decoration-none">{{$posts[0]->category->name}}</a>{{ $posts[0]->created_at->diffForHumans() }}</small>   </p>
-                    <p class="card-text">{{ $posts[0]->exerpt }}</p>
-      
-                  </div>
+               <div class="position-absolute bg-dark px-3 py-2 text-light"><a href="/posts?category={{$posts[0]->category->slug}}" class="text-decoration-none text-light">{{ $posts[0]->category->name }}</a></div>
+                @if ($posts[0]->image)
+                <div style="max-height: 400px; overflow: hidden;">
+                  <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}" class="img-fluid" style="max-width: 100%; height: auto;">
               </div>
-          @else
-              <p>No posts available.</p>
-          @endif
+                @else
+                    <img src="https://source.unsplash.com/1920x800?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
+                @endif
+                <div class="card-body text-center">
+                  <h5 class="card-title card-title-border"><a href="/posts/{{$posts[0]->slug}}" class="text-decoration-none text-dark">{{ $posts[0]->titel }}</a></h5>
+                 
+                  <p>
+                    <small class="text-muted">
+                    <i class="bi bi-person-fill"></i> <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none"> {{ $posts[0]->author->name }}</a> In <a href="/posts?category={{$posts[0]->category->slug}}" class="text-decoration-none"> {{$posts[0]->category->name}}</a> <i class="bi bi-calendar-fill"></i> {{ $posts[0]->created_at->format('d-m-Y') }}</small>   </p>
+                  <p class="card-text text-truncate">{{ $posts[0]->exerpt }}</p>
+    
+                </div>
+            </div>
+            
+        @else
+            <p>No posts available.</p>
+        @endif
+            
             </div>
             
             <div class="line"></div>
 
             <div class="p-4">
-              <h4 class="fst-italic">Archives</h4>
+              <h4 class="fst-italic">KATEGORI</h4>
               <ol class="list-unstyled mb-0">
-                <li><a href="#">March 2021</a></li>
-                <li><a href="#">February 2021</a></li>
-                <li><a href="#">January 2021</a></li>
-                <li><a href="#">December 2020</a></li>
-                <li><a href="#">November 2020</a></li>
-                <li><a href="#">October 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">August 2020</a></li>
-                <li><a href="#">July 2020</a></li>
-                <li><a href="#">June 2020</a></li>
-                <li><a href="#">May 2020</a></li>
-                <li><a href="#">April 2020</a></li>
+                @foreach ($categories as $category)
+                <li><a href="/posts?category={{$category->slug}}" class="text-decoration-none text-dark category-link">{{ $category->name }}</a></li>
+                @endforeach
               </ol>
             </div>
-    
-            <div class="p-4">
-              <h4 class="fst-italic">Elsewhere</h4>
-              <ol class="list-unstyled">
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Facebook</a></li>
-              </ol>
+    <div class="line"></div>
+            <div>
+              <h4 class="fst-italic">RELATIONSHIP</h4>
+              <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 150px; width: 150px">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ asset('img/LOGO_SMK.png') }}" class="d-block" alt="..." style="height: 150px; width: 150px;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ asset('img/gambar1.JPG') }}" class="d-block" alt="..." style="height: 150px; width: 150px;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ asset('img/gambar2.JPG') }}" class="d-block" alt="..." style="height: 150px; width: 150px;" >
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -346,25 +352,46 @@
 
 
 <script>
-    // Ambil tombol
+
+function toggleText() {
+    var summary = document.getElementById("summary");
+    var fullText = document.getElementById("full-text");
+    var button = document.getElementById("read-more");
+
+    if (fullText.style.display === "none") {
+        fullText.style.display = "block";
+        summary.style.display = "none";
+        button.textContent = "Read Less";
+    } else {
+        fullText.style.display = "none";
+        summary.style.display = "block";
+        button.textContent = "Read More";
+    }
+}
     var scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-    // Ketika pengguna scrolls ke bawah 20px dari atas dokumen, tampilkan tombol
-    window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction()};
 
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollToTopBtn.style.display = "block";
-        } else {
-            scrollToTopBtn.style.display = "none";
-        }
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
     }
+}
 
-    // Ketika pengguna mengklik tombol, scroll kembali ke atas dokumen
-    scrollToTopBtn.onclick = function() {
-        document.body.scrollTop = 0; // Untuk Safari
-        document.documentElement.scrollTop = 0; // Untuk Chrome, Firefox, IE, dan Opera
-    }
+
+scrollToTopBtn.onclick = function() {
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0; 
+}
+
+scrollToTopBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+};
 </script>
 
 

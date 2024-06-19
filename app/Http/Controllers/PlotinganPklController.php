@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
+use App\Models\plotingan_pkl;
 use Illuminate\Http\Request;
 
-class homeController extends Controller
+class PlotinganPklController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,8 @@ class homeController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
-        $categories = Category::all();
-        return view('home', compact('posts', 'categories'));
+        //
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -45,10 +41,10 @@ class homeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\plotingan_pkl  $plotingan_pkl
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(plotingan_pkl $plotingan_pkl)
     {
         //
     }
@@ -56,10 +52,10 @@ class homeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\plotingan_pkl  $plotingan_pkl
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(plotingan_pkl $plotingan_pkl)
     {
         //
     }
@@ -68,10 +64,10 @@ class homeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\plotingan_pkl  $plotingan_pkl
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, plotingan_pkl $plotingan_pkl)
     {
         //
     }
@@ -79,10 +75,10 @@ class homeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\plotingan_pkl  $plotingan_pkl
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(plotingan_pkl $plotingan_pkl)
     {
         //
     }

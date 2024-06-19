@@ -1,7 +1,7 @@
 
 
 
-@extends('layout.main')
+@extends('layout.index')
 
 @section('title','Categories')
 

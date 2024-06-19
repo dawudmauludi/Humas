@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\dashboardCategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\homeController;
@@ -23,62 +25,51 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/', [homeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', function () {
     return view('about');
 });
 
 
+Route::get('/posts', [PostsController::class, 'index']);
+Route::get('/posts/{post:slug}', [PostsController::class, 'show']);
 
-
-
-
-
-
-Route::get('/posts',[PostsController::class, 'index']);
-
-Route::get('/posts/{post:slug}',[PostsController::class, 'show']);
-
-
-Route::get('/categories', function(){
+Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
         'active' => 'categories',
         'categories' => Category::all(),
     ]);
-
 });
 
-// Route::get('/categories/{category}', 'CategoryController@show');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardPostController::class, 'index']);
+
+    Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
+    Route::resource('/dashboard/posts', DashboardPostController::class);
+
+    Route::resource('/dashboard/categories', DashboardCategoriesController::class);
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');
+});
 
 
-Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login',[LoginController::class, 'authenticate']);
-Route::post('/logout',[LoginController::class, 'logout']);
- 
+Route::get('/dashboard/categories/checkSlug', [DashboardCategoriesController::class, 'checkSlug'])->name('categories.checkSlug');
+Route::resource('/dashboard/categories', DashboardCategoriesController::class)->except('destroy');
 
 
-Route::get('/register',[RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register',[RegisterController::class, 'store']);
-
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
-})->middleware('auth');
-
-
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class,'checkSlug'])->middleware('auth');
-
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
-
-
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
-
-
-
+Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.form');
+Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
+Route::get('/journal', [AbsensiController::class, 'show'])->name('journal');
 
 

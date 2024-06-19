@@ -1,7 +1,7 @@
 
 
 
-@extends('layout.main')
+@extends('layout.index')
 
 @section('container')
     {{-- <h1 class="mb-5">Popst Category: {{ $category }}</h1> --}}

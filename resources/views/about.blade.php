@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.index')
 
 @section('title','Visi & Misi')
 @section('container')

@@ -40,13 +40,36 @@
     font-family: 'Roboto',serif;
 }
 
+@media (max-width: 600px) {
+        .container-beranda {
+          display: none;
+        }
+
+        .carousel{
+            width: 100%;
+            height: 500px;
+        }
+
+        .waktu-sekarang, .hari-sekarang {
+            margin: 0;
+        }
+
+        .hari-sekarang{
+            width: 50px;
+        }
+
+        .marquee-container {
+            width: auto;
+        }
+    }
+
 </style>
 
 <div class="container-beranda mb-2">
     <div class="hari-sekarang text-white fw-bold"></div>
     <div class="marquee-container">
         @auth
-        <marquee class="text-light fw-bold fs-4 text-uppercase">"selamat datang di website humas smkn 1 pasuruan, {{ auth()->user()->name }}"</marquee>
+        <marquee class="text-light fw-bold fs-4 text-uppercase">selamat datang di website humas smkn 1 pasuruan</marquee>
         @else
         <marquee class="text-light fw-bold fs-4 text-uppercase">selamat datang di website humas smkn 1 pasuruan</marquee>
         @endauth

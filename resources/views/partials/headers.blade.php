@@ -13,20 +13,22 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            margin-top: 70px;
         }
 
         .text-logo {
-            width:250px;
+            width:500px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Roboto';
+            font-size: 2em; 
         }
 
         .logo-headers {
             width: 100%;
             text-align: center;
-            margin-left: 50px;
+
         }
 
         .sosmed {
@@ -40,14 +42,15 @@
             justify-content: center;
         }
     @media (min-width: 576px) {
+            .container-headers{
+                margin-top: 70px;
+            }
             .text-logo {
-                width: 250px;
-                text-align: left;
+                width:500px;
             }
             .logo-headers {
                 width: auto;
                 text-align: left;
-                margin-left: 50px;
             }
             .sosmed {
                 width: auto;
@@ -71,7 +74,7 @@
     
     <div class="logo-headers d-flex order-0 order-sm-1">
         <img src="{{ asset('img/LOGO_SMK.png') }}" alt="" width="100px">
-        <h1 class="text-logo text-uppercase">SMK Negeri 1 Pasuruan</h1>
+        <h1 class="text-logo text-uppercase">Humas & BKK <br> SMK Negeri 1 Pasuruan</h1>
     </div>
 
     <div class="search d-flex order-2 order-sm-2">
@@ -83,8 +86,8 @@
                 <input type="hidden" name="author" value="{{ request('author') }}">
             @endif
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" name="cari" value="{{ request('cari') }}">
-                <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                <input type="text" class="form-control" placeholder="Cari Berita" name="cari" value="{{ request('cari') }}">
+                <button class="btn" style="background-color: #599DDC; color: white;" type="submit"><i class="bi bi-search"></i></button>
             </div>
         </form>
     </div>

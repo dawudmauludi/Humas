@@ -1,14 +1,16 @@
 
 
-@extends('layout.main')
+@extends('layout.index')
 
 
 @section('container')
 <div class="container">
     <div class="row justify-content-center mb-5">
         <div class="col-md-8">
+            
+           
 
-            <h2 class="mb-3">{{ $post->titel }}</h2>
+            <h2 class="mb-3"> <a href="javascript:void(0);" class="btn btn-primary" onclick="history.back()"><i class="bi bi-arrow-left"></i></a> {{ $post->titel }}</h2>
 
             
         <p>By: <a href="/posts?author={{ $post->author->username }}on-none">{{ $post->author->name }}</a> In <a href="/posts?category={{$post->Category->slug}}">{{ $post->Category->name}}</a></p>
@@ -28,7 +30,6 @@
             {!! $post->body !!} <br>
         </article>
 
-        <a href="/posts">Back To Posts</a>
         </div>
     </div>
 </div>

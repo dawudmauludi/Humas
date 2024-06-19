@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
+use App\Models\journal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
-class homeController extends Controller
+class journalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,8 @@ class homeController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
-        $categories = Category::all();
-        return view('home', compact('posts', 'categories'));
+        //
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +25,8 @@ class homeController extends Controller
      */
     public function create()
     {
-        //
+        $currentDate = Carbon::today()->toDateString();
+        return view('journal.create', compact('currentDate'));
     }
 
     /**
@@ -39,7 +37,24 @@ class homeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tanggal' => 'required|date',
+            'uraian_kegiatan' => 'required|string',
+            'foto_kegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        // Simpan file foto
+        $photoName = time().'.'.$request->foto_kegiatan->extension();  
+        $request->foto_kegiatan->move(public_path('img'), $photoName);
+
+    
+        journal::create([
+            'tanggal' => $request->tanggal,
+            'uraian_kegiatan' => $request->uraian_kegiatan,
+            'foto_kegiatan' => $photoName
+        ]);
+
+        return redirect('/journal/create')->with('success', 'Journal entry created successfully.');
     }
 
     /**

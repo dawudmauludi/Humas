@@ -5,7 +5,11 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\dudi;
+use App\Models\pembimbing;
+use App\Models\plotingan_pkl;
 use App\Models\Post;
+use App\Models\siswa;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -48,11 +52,15 @@ class DatabaseSeeder extends Seeder
             'slug' => 'web-design'
         ]);
         
+        
         Category::create([
             'name' => 'Personal',
             'slug' => 'personal'
         ]);
-        
+        Category::create([
+            'name' => 'school',
+            'slug' => 'school'
+        ]);
         Post::factory(20)->create();
 
         // Post::create([
@@ -88,10 +96,42 @@ class DatabaseSeeder extends Seeder
         //     'user_id' => 2
         // ]);
 
+        dudi::create([
+            'nama' => 'dudi1',
+            'alamat' => 'pasuruan',
+            'no_telp' => '089331545',
+            'instruktur' => 'instruktur1',
+            'pimpinan' => 'dawud'
+        ]);
+
+        pembimbing::create([
+            'nama' => 'muhammad sholeh',
+            'alamat' => 'bangil',
+            'no_telp' => '0894328374'
+         ]);
+
+         siswa::create([
+             'id_user' => 1,
+            'nama' => 'dawud mauludi',
+            'kelas' => 'XII REKAYASA PERANGKAT LUNAK 1',
+            'alamat' => 'ngemplak rejo',
+            'no_telp' => '0838218375',
+            'nama_orangTua' => 'ipul'
+         ]);
+
+         plotingan_pkl::create([
+            'id_dudi' => 1,
+            'id_pembimbing' => 1,
+            'id_siswa' => 1
+         ]);
         $this->call([
             User::class,
             Category::class,
-            Post::class
+            Post::class,
+            dudi::class,
+            pembimbing::class,
+            siswa::class,
+            plotingan_pkl::class
         ]);
     }
 }

@@ -47,23 +47,27 @@ class DashboardPostController extends Controller
 
 
 
-        $validateData = $request->validate([
+        $validatedData = $request->validate([
             'titel' => 'required|max:255',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:posts,slug',
             'category_id' => 'required',
-            'image' => 'image|file|max:1024',
-            'body' => 'required'
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            'body' => 'required',
         ]);
-
-
-        if($request->file('image')){
-            $validateData['image'] = $request->file('image')->store('post-images');
+    
+        // Simpan gambar ke penyimpanan
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/image');
+            $validatedData['image'] = $imagePath;
         }
-
-        $validateData['user_id']= auth()->user()->id;
-        $validateData['exerpt'] =Str::limit(strip_tags($request->body),200 );
-
-        Post::create($validateData);
+    
+        // Simpan data post ke database
+        
+        $validatedData['user_id']= auth()->user()->id;
+        $validatedData['exerpt'] =Str::limit(strip_tags($request->body),200 );
+        
+        Post::create($validatedData);
+  
 
         return redirect('/dashboard/posts')->with('success','New post hasbend added!');
     }
