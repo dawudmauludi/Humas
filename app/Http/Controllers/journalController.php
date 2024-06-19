@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\journal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class journalController extends Controller
 {
@@ -25,8 +26,7 @@ class journalController extends Controller
      */
     public function create()
     {
-        $currentDate = Carbon::today()->toDateString();
-        return view('journal.create', compact('currentDate'));
+        return view('journal');
     }
 
     /**
@@ -37,24 +37,42 @@ class journalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validasi = $request->validate([
             'tanggal' => 'required|date',
             'uraian_kegiatan' => 'required|string',
             'foto_kegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Simpan file foto
-        $photoName = time().'.'.$request->foto_kegiatan->extension();  
-        $request->foto_kegiatan->move(public_path('img'), $photoName);
+        if ($request->hasFile('foto_kegiatan')) {
+            $imagePath = $request->file('foto_kegiatan')->store('public/image');
+            $validasi['foto_kegiatan'] = $imagePath;
+        } else {
+            return redirect()->back()->withErrors(['msg' => 'Gambar tidak ditemukan atau gagal diunggah.']);
+        }
 
-    
-        journal::create([
-            'tanggal' => $request->tanggal,
-            'uraian_kegiatan' => $request->uraian_kegiatan,
-            'foto_kegiatan' => $photoName
-        ]);
+        // Ambil id_plotingan dari sesi
+        $id_plotingan = Session::get('id_plotingan');
 
-        return redirect('/journal/create')->with('success', 'Journal entry created successfully.');
+        if (!$id_plotingan) {
+            return redirect()->back()->withErrors(['msg' => 'ID Plotingan tidak ditemukan dalam sesi.']);
+        }
+
+        // Simpan data jurnal
+        try {
+            Journal::create([
+                'tanggal' => $request->tanggal,
+                'uraian_kegiatan' => $request->uraian_kegiatan,
+                'foto_kegiatan' => $imagePath,
+                'id_plotingan' => $id_plotingan
+            ]);
+        } catch (\Exception $e) {
+            // Menangkap dan menampilkan kesalahan
+            return redirect()->back()->withErrors(['msg' => 'Terjadi kesalahan saat menyimpan data jurnal: ' . $e->getMessage()]);
+        }
+
+        // Redirect ke halaman home setelah menyimpan jurnal
+        return redirect()->route('home')->with('success', 'Journal entry created successfully.');
     }
 
     /**

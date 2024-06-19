@@ -6,6 +6,7 @@ use App\Models\absensi;
 use Illuminate\Http\Request;
 use App\Models\plotingan_pkl;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AbsensiController extends Controller
 {
@@ -41,39 +42,39 @@ class AbsensiController extends Controller
             'status' => 'required|in:hadir,tidak_hadir',
             'keterangan' => 'nullable|required_if:status,tidak_hadir',
         ]);
-        
+
         // Ambil ID pengguna yang sedang login
         $user = Auth::user();
-        
+
         // Cari plotingan yang terkait dengan siswa yang berhubungan dengan pengguna yang login
         $plotingan = plotingan_pkl::whereHas('siswa', function($query) use ($user) {
             $query->where('id_user', $user->id);
         })->first();
-        
+
         if (!$plotingan) {
             // Jika tidak ada data Plotingan, berikan pesan error atau lakukan tindakan lain
             return redirect()->back()->withErrors(['msg' => 'Data plotingan tidak ditemukan untuk siswa yang login.']);
         }
-        
+
         // Buat entri baru di tabel Absensi dengan menyertakan ID dari relasi
         try {
-            Absensi::create([
+            $absensi = Absensi::create([
                 'status' => $request->status,
                 'keterangan' => $request->keterangan,
-                'id_plotingan' => $plotingan->id, // Mengambil ID Plotingan
-                'user_id' => $user->id, // Menyertakan user_id jika ada
+                'id_plotingan' => $plotingan->id,
+                'user_id' => $user->id,
             ]);
+            
+            // Simpan id_plotingan ke dalam sesi
+            Session::put('id_plotingan', $plotingan->id);
+
         } catch (\Exception $e) {
             // Menangkap dan menampilkan kesalahan
             return redirect()->back()->withErrors(['msg' => 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage()]);
         }
-        
-        // Redirect pengguna ke rute yang sesuai tergantung pada status yang dipilih
-        if ($request->status == 'hadir') {
-            return redirect()->route('journal');
-        } else {
-            return redirect()->route('home');
-        }
+
+        // Redirect pengguna ke rute pembuatan jurnal
+        return redirect()->route('journal');
     
     
     }

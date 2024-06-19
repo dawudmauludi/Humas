@@ -9,4 +9,8 @@ class journal extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function plotingan(){
+        return $this->belongsTo(plotingan_pkl::class);
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboardCategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\journalController;
 use App\Models\post;
 use App\Models\User;
 use App\Models\Category;
@@ -68,8 +69,10 @@ Route::get('/dashboard/categories/checkSlug', [DashboardCategoriesController::cl
 Route::resource('/dashboard/categories', DashboardCategoriesController::class)->except('destroy');
 
 
-Route::get('/absensi', [AbsensiController::class, 'index'])->name('absensi.form');
 Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
-Route::get('/journal', [AbsensiController::class, 'show'])->name('journal');
+Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen');
+Route::post('/journal', [AbsensiController::class, 'store'])->name('journal');
+Route::get('/journal', [journalController::class, 'create'])->name('journal');
+Route::post('/journal', [journalController::class, 'store'])->name('journal.store');
 
 
