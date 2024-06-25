@@ -73,7 +73,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav gap-4 ms-auto">
+            <ul class="navbar-nav gap-3 ms-auto">
                 <li class="nav-item nav-items">
                     <a class="nav-link text-uppercase  {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/">Beranda</a>
                 </li>
@@ -105,37 +105,13 @@
                     <a class="nav-link text-uppercase {{ Request::is('absensi') ? 'active' : '' }}" href="/absensi">E - Journal</a>
                 </li>
                 @endauth
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-uppercase  {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Categories</a>
-                </li>
+                </li> --}}
               
             </ul>
             
-            <ul  class="navbar-nav ms-auto">
-                @auth
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=random&color=fff" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                      <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> Dashboard</a></li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <form action="/logout" method="POST">
-                        @csrf
-                        <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i>Log Out</button>
-                    </form>
-                    </ul>
-                  </div>
-                  @else
-                  <li class="nav-item">
-                    <a class="btn btn-login text-light {{ Request::is('login') ? 'active' : '' }}" href="/login">
-                        <i class="bi bi-indent"></i>Login
-                    </a>
-                </li>
-                @endauth
-            </ul>
+         
            
           
             {{-- <ul class="navbar-nav ms-auto">
@@ -158,8 +134,33 @@
                 @else
                
                 @endauth --}}
-            
+                <ul  class="navbar-nav ms-auto">
+                    @auth
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=random&color=fff" alt="mdo" width="32" height="32" class="rounded-circle fw-bold">
+                        </a>
+                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                          <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-sidebar-reverse"></i> Dashboard</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="/profil">Profile</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-left"></i>Log Out</button>
+                        </form>
+                        </ul>
+                      </div>
+                      @else
+                      <li class="nav-item">
+                        <a class="btn btn-login text-light {{ Request::is('login') ? 'active' : '' }}" href="/login">
+                            <i class="bi bi-indent"></i>Login
+                        </a>
+                    </li>
+                    @endauth
+                </ul>
         </div>
+       
     </div>
 </nav>
 

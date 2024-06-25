@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
     <title>Dashboard</title>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -19,7 +19,8 @@
 
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <style>
       trix-toolbar [data-trix-button-group="file-tools"]{
         display: none;
@@ -46,6 +47,12 @@
   <script src="/js/dashboard.js"></script>
   <script>
     feather.replace();
+  </script>
+
+  <script>
+      $(document).ready(function() {
+    $('.form-select').select2();
+  });
   </script>
   </body>
 </html>

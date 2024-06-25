@@ -14,17 +14,17 @@ class plotingan_pkl extends Model
 
     public function dudi()
     {
-        return $this->belongsTo(Dudi::class, 'id_dudi');
+        return $this->belongsTo(dudi::class, 'id_dudi');
     }
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'id_siswa');
+        return $this->belongsTo(siswa::class, 'id_siswa');
     }
 
     public function pembimbing()
     {
-        return $this->belongsTo(pembina::class, 'id_pemimbing');
+        return $this->belongsTo(pembimbing::class, 'id_pembimbing');
     }
 
 

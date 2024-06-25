@@ -17,9 +17,10 @@
         }
 
         .text-logo {
-            width:500px;
+            
             display: flex;
             justify-content: center;
+            align-items: center;
             align-items: center;
             font-family: 'Roboto';
             font-size: 2em; 
@@ -50,7 +51,9 @@
             }
             .logo-headers {
                 width: auto;
-                text-align: left;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .sosmed {
                 width: auto;
@@ -65,16 +68,13 @@
         }
 </style>
 
-<div class="container-headers container-fluid py-3">
+<div class="container-headers container-fluid py-3 px-3">
     <div class="sosmed d-flex gap-3 order-1 order-sm-0">
-        <a href=""><img src="{{ asset('img/Whatsapp.png') }}" alt="" width="30px"></a>
-        <a href=""><img src="{{ asset('img/Instagram.png') }}" alt="" width="30px"></a>
-        <a href=""><img src="{{ asset('img/Social Icons.png') }}" alt="" width="30px"></a>
+        <img src="{{ asset('img/LOGO_SMK.png') }}" alt="" width="100px">
     </div>
     
     <div class="logo-headers d-flex order-0 order-sm-1">
-        <img src="{{ asset('img/LOGO_SMK.png') }}" alt="" width="100px">
-        <h1 class="text-logo text-uppercase">Humas & BKK <br> SMK Negeri 1 Pasuruan</h1>
+        <h1 class="text-logo text-uppercase text-center">Humas & BKK <br> SMK Negeri 1 Pasuruan</h1>
     </div>
 
     <div class="search d-flex order-2 order-sm-2">

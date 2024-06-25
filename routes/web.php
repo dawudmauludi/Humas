@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminPlotinganController;
 use App\Http\Controllers\dashboardCategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
@@ -13,7 +14,9 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\profilController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug']);
     Route::resource('/dashboard/posts', DashboardPostController::class);
-
+    Route::resource('/dashboard/plotingan', AdminPlotinganController::class);
+    Route::get('/profil',[profilController::class,'index']);
     Route::resource('/dashboard/categories', DashboardCategoriesController::class);
 });
 
@@ -74,5 +78,6 @@ Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen');
 Route::post('/journal', [AbsensiController::class, 'store'])->name('journal');
 Route::get('/journal', [journalController::class, 'create'])->name('journal');
 Route::post('/journal', [journalController::class, 'store'])->name('journal.store');
+Route::resource('/siswa',SiswaController::class);
 
 

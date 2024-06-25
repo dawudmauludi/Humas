@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_plotingan')->constrained('plotingan_pkls')->onDelete('cascade')->onUpdate('cascade');
             $table->date('tanggal');
+            $table->time('jam_datang');
+            $table->time('jam_pulang');
             $table->text('uraian_kegiatan');
             $table->text('foto_kegiatan');
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

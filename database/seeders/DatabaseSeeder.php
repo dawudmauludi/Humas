@@ -113,10 +113,19 @@ class DatabaseSeeder extends Seeder
          siswa::create([
              'id_user' => 1,
             'nama' => 'dawud mauludi',
+            'Nomor_induk_siswa'=>'93201',
+            'jenkel' => 'laki-laki',
+            'tempat_lahir' => 'pasuruan',
+            'tanggal_lahir'=>'11-04-05',
+            'agama' => 'islam',
+            'kota' => 'pasuruan',
             'kelas' => 'XII REKAYASA PERANGKAT LUNAK 1',
             'alamat' => 'ngemplak rejo',
             'no_telp' => '0838218375',
-            'nama_orangTua' => 'ipul'
+            'nama_orangTua' => 'ipul',
+            'nama_industri' => 'pln',
+            'alamat_industri' => 'gondang wetan',
+            'nama_negara' => 'indonesia'
          ]);
 
          plotingan_pkl::create([

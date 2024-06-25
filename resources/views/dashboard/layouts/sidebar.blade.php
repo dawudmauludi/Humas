@@ -13,6 +13,12 @@
             My Posts
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/plotingan*') ? 'active' : '' }}" href="/dashboard/plotingan">
+            <span data-feather="file-text"></span>
+            PLOTINGAN PKL
+          </a>
+        </li>
       </ul>
 
       @can('admin')

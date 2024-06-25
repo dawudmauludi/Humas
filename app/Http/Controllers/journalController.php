@@ -39,8 +39,11 @@ class journalController extends Controller
     {
         $validasi = $request->validate([
             'tanggal' => 'required|date',
+            'jam_datang' => 'required',
+            'jam_pulang' => 'required',
             'uraian_kegiatan' => 'required|string',
-            'foto_kegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'foto_kegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'catatan' => 'nullable'
         ]);
 
         // Simpan file foto
@@ -62,8 +65,11 @@ class journalController extends Controller
         try {
             Journal::create([
                 'tanggal' => $request->tanggal,
+                'jam_datang' => $request->jam_datang,
+                'jam_pulang' => $request->jam_pulang,
                 'uraian_kegiatan' => $request->uraian_kegiatan,
                 'foto_kegiatan' => $imagePath,
+                'catatan' => $request->catatan,
                 'id_plotingan' => $id_plotingan
             ]);
         } catch (\Exception $e) {

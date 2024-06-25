@@ -1,6 +1,86 @@
 
+<style>
+  .bg{
+    
+    background-color: rgba(225, 225, 225, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px; /* Padding di sekitar ikon */
+        border-radius: 50%; /* Agar background ikon menjadi lingkaran */
+        width: 40px; /* Lebar ikon */
+        height: 40px; /* Tinggi ikon */
+  }
+
+  .isi {
+        display: flex; /* Membuat konten dalam div menjadi flexbox */
+        flex-direction: column; /* Mengatur tata letak kolom */
+        justify-content: center; /* Pusatkan konten secara vertical */
+        margin-left: 10px;
+    }
+
+    .title {
+        font-weight: bold; /* Tebal */
+        text-align: left; /* Pusatkan judul */
+    }
+
+    .description {
+        font-weight: bold/* Warna font deskripsi */
+    }
+
+</style>
+
 <div class="container-fluid bg-primary mt-5">
-    <footer>
+    <footer class="container">
+      <div class="row py-3" style="display: flex; justify-content: center; align-items: center;">
+        {{-- <div class="col-md-6 col-lg-1">
+          <div class="logo">
+            <a href="" class="navbar-brand fw-bold fs-6 text-dark"><img src="{{ asset('img/LOGO_SMK.png') }}" alt="logo" width="50px"></a>
+        </div>
+        </div> --}}
+
+        <div class="col-md-6 col-lg-6">
+          <a href="#" class="text-decoration-none text-dark d-flex text-center">
+              <div class="bg rounded-circle">
+                  <i class="bi bi-house-fill"></i>
+              </div>
+              <div class="isi text-left">
+                <div class="title">Alamat</div>
+             <p class="text-left">Jalan Veteran, Bugul Lor, Panggungrejo, Kota Pasuruan, Jawa Timur </p>
+              </div>
+          </a>
+      </div>
+        <div class="col-md-6 col-lg-3">
+          <a href="#" class="text-decoration-none text-dark d-flex text-center">
+              <div class="bg rounded-circle">
+                 <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="isi">
+                <div class="title">Email</div>
+              <p class="text-left">admin@gmail.com</p>
+              </div>
+          </a>
+      </div>
+        <div class="col-md-6 col-lg-3">
+          <a href="#" class="text-decoration-none text-dark d-flex text-center">
+              <div class="bg rounded-circle">
+                  <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="isi">
+                <div class="title">Telp</div>
+               <p class="text-left">(0343) 421380 </p>
+              </div>
+          </a>
+      </div>
+
+      
+      
+
+        
+        
+      
+      </div>
+      <hr>
       <div class="row">
         <div class="col-2">
           <h5 class="mt-4">Section</h5>
