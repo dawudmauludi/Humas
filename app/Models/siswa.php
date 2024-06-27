@@ -15,4 +15,9 @@ class siswa extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function plotinganPkl()
+{
+    return $this->hasOne(plotingan_pkl::class, 'id_siswa');
+}
 }

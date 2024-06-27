@@ -49,9 +49,7 @@ class SiswaController extends Controller
             'kota' => 'required|string',
             'no_telp' => 'required|string|max:20',
             'nama_orangTua' => 'required|string|max:255',
-            'nama_industri' => 'required|string',
-            'alamat_industri' => 'required|string',
-            'nama_negara' => 'required|string',
+           
         ]);
 
         $validateData['id_user'] = Auth::id();

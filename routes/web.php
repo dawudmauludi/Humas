@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\journalController;
+use App\Http\Controllers\KetersediaanController;
 use App\Models\post;
 use App\Models\User;
 use App\Models\Category;
@@ -47,12 +48,16 @@ Route::get('/categories', function () {
     ]);
 });
 
+// {{ROUTE AUTHENTICATION}}
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+
+// {{ROUTE AUTHENTICATION}}
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardPostController::class, 'index']);
@@ -61,7 +66,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/posts', DashboardPostController::class);
     Route::resource('/dashboard/plotingan', AdminPlotinganController::class);
     Route::get('/profil',[profilController::class,'index']);
+   Route::resource('/dashboard/ketersediaan',KetersediaanController::class);
     Route::resource('/dashboard/categories', DashboardCategoriesController::class);
+    Route::get('/dashboard/categories/checkSlug', [DashboardCategoriesController::class, 'checkSlug'])->name('categories.checkSlug');
+Route::resource('/dashboard/categories', DashboardCategoriesController::class)->except('destroy');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -69,15 +77,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 
-Route::get('/dashboard/categories/checkSlug', [DashboardCategoriesController::class, 'checkSlug'])->name('categories.checkSlug');
-Route::resource('/dashboard/categories', DashboardCategoriesController::class)->except('destroy');
 
 
+// {{ROUTE E-JOURNAL}}
 Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
 Route::get('/absensi', [AbsensiController::class, 'index'])->name('absen');
 Route::post('/journal', [AbsensiController::class, 'store'])->name('journal');
 Route::get('/journal', [journalController::class, 'create'])->name('journal');
 Route::post('/journal', [journalController::class, 'store'])->name('journal.store');
+// {{ROUTE E-JOURNAL}}
 Route::resource('/siswa',SiswaController::class);
 
 

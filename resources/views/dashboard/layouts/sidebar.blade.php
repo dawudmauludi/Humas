@@ -19,6 +19,12 @@
             PLOTINGAN PKL
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('dashboard/ketersediaan*') ? 'active' : '' }}" href="/dashboard/ketersediaan">
+            <span data-feather="file-text"></span>
+            Ketersediaan
+          </a>
+        </li>
       </ul>
 
       @can('admin')

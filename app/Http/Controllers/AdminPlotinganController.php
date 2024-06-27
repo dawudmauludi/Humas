@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\dudi;
+use App\Models\ketersediaan;
 use App\Models\pembimbing;
 use App\Models\plotingan_pkl;
 use App\Models\siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminPlotinganController extends Controller
 {
@@ -30,7 +32,7 @@ class AdminPlotinganController extends Controller
     public function create()
     {
         return view('dashboard.plotingan.create',[
-            'dudi' => dudi::all(),
+            'ketersediaans' => ketersediaan::with('dudi')->get(),
             'siswa' => siswa::all(),
             'pembimbing' => pembimbing::all()
         ]);
@@ -44,15 +46,33 @@ class AdminPlotinganController extends Controller
      */
     public function store(Request $request)
     {
-      $validateData =$request->validate([
-            'id_dudi' => 'required',
-            'id_siswa' => 'required',
-            'id_pembimbing' => 'required' 
+        $data = $request->validate([
+            'id_ketersediaan' => 'required|exists:ketersediaans,id',
+            'id_siswa' => 'required|exists:siswas,id',
+            'id_pembimbing' => 'required',
         ]);
 
-        plotingan_pkl::create($validateData);
+        DB::beginTransaction();
 
-        return redirect('/dashboard/plotingan')->with('success','New post hasbend added!');
+        try {
+            plotingan_pkl::create($data);
+
+            $ketersediaan = Ketersediaan::find($data['id_ketersediaan']);
+            // Update ketersediaan
+            $ketersediaan->increment('jumlah_siswa');
+            $ketersediaan->decrement('sisa_kuota');
+            $ketersediaan->save();
+
+            DB::commit();
+
+            return redirect()->route('plotingan.index')->with('success', 'Plotingan berhasil ditambahkan');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menambahkan plotingan: ' . $e->getMessage());
+        }
+    
+    
+    
     }
 
     /**

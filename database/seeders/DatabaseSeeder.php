@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\dudi;
+use App\Models\jurusan;
 use App\Models\pembimbing;
 use App\Models\plotingan_pkl;
 use App\Models\Post;
@@ -97,7 +98,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         dudi::create([
-            'nama' => 'dudi1',
+            'nama_industri' => 'dudi1',
             'alamat' => 'pasuruan',
             'no_telp' => '089331545',
             'instruktur' => 'instruktur1',
@@ -123,16 +124,11 @@ class DatabaseSeeder extends Seeder
             'alamat' => 'ngemplak rejo',
             'no_telp' => '0838218375',
             'nama_orangTua' => 'ipul',
-            'nama_industri' => 'pln',
-            'alamat_industri' => 'gondang wetan',
-            'nama_negara' => 'indonesia'
+           
          ]);
 
-         plotingan_pkl::create([
-            'id_dudi' => 1,
-            'id_pembimbing' => 1,
-            'id_siswa' => 1
-         ]);
+       
+
         $this->call([
             User::class,
             Category::class,

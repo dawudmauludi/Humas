@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Dudi</th>
+                <th scope="col">Ketersediaan</th>
                 <th scope="col">Siswa</th>
                 <th scope="col">Pembimbing</th>
                 <th scope="col">Action</th>
@@ -27,7 +27,7 @@
             @foreach ($plotingan as $ploting)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $ploting->dudi->nama }}</td>
+                <td>{{ $ploting->ketersediaan->dudi->nama_industri }}</td>
                 <td>{{ $ploting->siswa->nama }}</td>
                 <td>{{ $ploting->pembimbing->nama }}</td>
                 <td>

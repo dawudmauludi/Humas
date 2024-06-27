@@ -134,35 +134,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="nama_industri" class="form-label">Nama Industri</label>
-                            <input type="text" class="form-control @error('nama_industri') is-invalid @enderror" id="nama_industri" name="nama_industri" value="{{ old('nama_industri') }}" required>
-                            @error('nama_industri')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="alamat_industri" class="form-label">Alamat Industri</label>
-                            <textarea class="form-control @error('alamat_industri') is-invalid @enderror" id="alamat_industri" name="alamat_industri" required>{{ old('alamat_industri') }}</textarea>
-                            @error('alamat_industri')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_negara" class="form-label">Negara</label>
-                            <textarea class="form-control @error('nama_negara') is-invalid @enderror" id="nama_negara" name="nama_negara" required>{{ old('nama_negara') }}</textarea>
-                            @error('nama_negara')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
+                  
                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

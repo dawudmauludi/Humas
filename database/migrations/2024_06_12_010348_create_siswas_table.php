@@ -27,9 +27,6 @@ return new class extends Migration
             $table->string('kota');
             $table->string('no_telp',20);
             $table->string('nama_orangTua');
-            $table->string('nama_industri');
-            $table->text('alamat_industri');
-            $table->string('nama_negara');
             $table->timestamps();
         });
     }

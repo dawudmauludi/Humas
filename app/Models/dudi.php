@@ -11,4 +11,10 @@ class dudi extends Model
     protected $guarded =[
         'id'
     ];
+
+
+    public function ketersediaans()
+    {
+        return $this->hasMany(Ketersediaan::class, 'id_dudi');
+    }
 }

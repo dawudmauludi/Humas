@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dudis', function (Blueprint $table) {
+        Schema::create('plotingan_pkls', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_industri');
-            $table->text('alamat');
-            $table->string('no_telp',20);
-            $table->string('instruktur');
-            $table->string('pimpinan');
+            $table->foreignId('id_ketersediaan')->constrained('ketersediaans')->onDelete('cascade');
+            $table->foreignId('id_siswa')->constrained('siswas')->onDelete('cascade');
+            $table->foreignId('id_pembimbing')->constrained('pembimbings')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dudis');
+      
+        Schema::dropIfExists('plotingan_pkls');
     }
 };

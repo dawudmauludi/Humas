@@ -12,20 +12,21 @@ class plotingan_pkl extends Model
         'id'
     ];
 
-    public function dudi()
+    public function ketersediaan()
     {
-        return $this->belongsTo(dudi::class, 'id_dudi');
+        return $this->belongsTo(Ketersediaan::class, 'id_ketersediaan');
     }
 
     public function siswa()
     {
-        return $this->belongsTo(siswa::class, 'id_siswa');
+        return $this->belongsTo(Siswa::class, 'id_siswa');
     }
 
     public function pembimbing()
     {
-        return $this->belongsTo(pembimbing::class, 'id_pembimbing');
+        return $this->belongsTo(Pembimbing::class, 'id_pembimbing');
     }
+   
 
 
 }

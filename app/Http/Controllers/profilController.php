@@ -18,7 +18,7 @@ class profilController extends Controller
 
         $user = Auth::id();
 
-        $siswa = Siswa::where('id_user', $user)->first();
+        $siswa = Siswa::with(['plotinganPkl.ketersediaan.dudi'])->where('id_user', $user)->first();
        return view('profil',[
         'siswa' => $siswa
        ]);

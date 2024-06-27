@@ -66,23 +66,28 @@
             </div>
 
             <!-- Informasi DUDI -->
-            <div class="col-md-6">
-                <h5>Informasi DUDI</h5>
-                <hr>
-                <div class="mb-3">
-                    <label for="nama_industri" class="form-label">Nama Industri</label>
-                    <input type="text" class="form-control" id="nama_industri" value="{{ $siswa->nama_industri }}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="alamat_industri" class="form-label">Alamat Industri</label>
-                    <input type="text" class="form-control" id="alamat_industri" value="{{ $siswa->alamat_industri }}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="nama_negara" class="form-label">Nama Negara</label>
-                    <input type="text" class="form-control" id="nama_negara" value="{{ $siswa->nama_negara }}" readonly>
-                </div>
+            <div class="row">
+                @if ($siswa->plotinganPkl)
+                    <div class="col-md-12">
+                        <h5>Informasi DUDI</h5>
+                        <hr>
+                        <div class="mb-3">
+                            <label for="nama_industri" class="form-label">Nama Industri</label>
+                            <input type="text" class="form-control" id="nama_industri" value="{{ $siswa->plotinganPkl->ketersediaan->dudi->nama_industri }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="alamat_industri" class="form-label">Alamat Industri</label>
+                            <input type="text" class="form-control" id="alamat_industri" value="{{ $siswa->plotinganPkl->ketersediaan->dudi->alamat }}" readonly>
+                        </div>
+                    </div>
+                @else
+                    <div class="col-md-12">
+                        <p class="text-center text-warning">Siswa belum dipploting ke DUDI.</p>
+                    </div>
+                @endif
             </div>
-        </div>
+    
+           
         <div class="text-center">
             <a href="{{ route('home') }}" class="btn btn-primary mt-3">Kembali ke Beranda</a>
         </div>
